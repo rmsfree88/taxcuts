@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Wage Gap Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+      <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+<section class="every" id="every"> <!--  adding a new class which contains everything to be inserted.. -->
+ <link href='https://fonts.googleapis.com/css?family=Work+Sans:300,400' rel='stylesheet' type='text/css'> 
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+
+<section class="calculator" id="body">
+<form action="" class="wage-gap" id="wage-gap" onsubmit="return false;">
+    <!-- Total cost for every Federal employee… -->
+    <br>
+    
+  Years of Federal employment <br>
+  <span class="salary-initial">
+	<input type="number" min="0" step="1" id="years-employment" name="years-initial" class="years-initial" onchange="calculateTotal()" /><label class="input__label">	</label></span>
+  <br>
+  
+    Current age <br>
+    <span class="salary-initial"> <!-- COPIED SPAN AND INPUT BUT NEED TO MODIFY STILL -->
+	<input type="number" min="0" step="1" id="current-age" name="current-age" class="years-initial" onchange="calculateTotal()"/><label class="input__label">	</label></span>
+    <br>
+    
+    Current salary<br>
+    <span class="salary-initial"> <!-- COPIED SPAN AND INPUT BUT NEED TO MODIFY STILL -->
+	<input type="number" min="0" step="100" id="current-salary" name="current-salary" onchange="calculateTotal()"/><label class="input__label">	<span class="input__label-content">$</span></label></span>
+    <br>
+    
+    Expected salary at retirement<br>
+    <span class="salary-initial"> <!-- COPIED SPAN AND INPUT BUT NEED TO MODIFY STILL -->
+	<input type="number" min="0" step="100" id="expected-salary" name="expected-salary" onchange="calculateTotal()"/><label class="input__label">	<span class="input__label-content">$</span></label></span>
+    <br>
+    
+    Gender <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--><br>
+    <span class="input">
+  <select class="input" id="womanethnicity" name="womanethnicity" onchange="calculateTotal()">
+    <option value="latina">
+      Male
+    </option>
+    <option value="black">
+      Female
+    </option>
+    <option value="pacificislander">
+      a Pac
+    </option>
+    <option value="ndn">
+      a Nat 
+    </option>
+    <option value="asian">
+      an As
+    </option>
+  </select>
+<br><br>
+  <span class="outputs">Will lose...
+        
+    <span id="salary-calculated"></span></span>
+</form>
+</section>
+
+<section class="data">
+  <h1>The typical Federal employee will lose <em title="The same gap between white women and white men.">$300,000-$900,000</em>, but exact financial impact differs greatly from one individual to another.</h1>
+
+  <p><a href="https://www.americanprogress.org/issues/women/report/2015/04/14/110962/women-of-color-and-the-gender-wage-gap/">In May </a>the White House released its a full budget proposal which calls for major cuts to the retirement benefits of every federal employee, including civilian workers and the armed forces. At first glance, this certainly seems like some pretty bad news for federal workers hoping to receive their previously agreed upon income in retirement. But absent some hard data it may be unclear just how much this will impact any given individual.</p>
+</section>
+</section>
+    <script src="js/index.js"></script>
+
+</body>
+</html>
