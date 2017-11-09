@@ -16,16 +16,14 @@
 
     If you currently make
     <span class="salary-initial"> <!-- COPIED SPAN AND INPUT BUT NEED TO MODIFY STILL -->
-	<input type="number" min="0" step="100" id="current-salary" name="current-salary" onchange="calculateTotal()"/><label class="input__label">	<span class="input__label-content">$</span></label></span>
+	<input type="number" min="0" step="1000" id="salary-initial" name="salary-initial" onchange="calculateTotal()"/><label class="input__label">	<span class="input__label-content">$</span></label></span>
     <br>    
 <br>
-  <span class="outputs">Will lose...
-        
-    <span id="salary-calculated"></span></span>
+  <span class="outputs">Will lose...  <span id="salary-calculated"></span> <br><br>
+    Percentage  <span id="percent-calculated"></span>
+    </span>
 </form>
 </section>
-
-
 
     <script src="js/index.js"></script>
 

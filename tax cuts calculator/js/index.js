@@ -5,12 +5,14 @@ source is shared under the terms of LGPL 3 www.gnu.org/licenses/lgpl.html
 */
 
 //this is an associative array! we are defining the values from the keys (the dropdown options) to use in the function.
+
+/*
 var woman_percentage = new Array();
 woman_percentage["latina"] = .54;
 woman_percentage["black"] = .63;
 woman_percentage["pacificislander"] = .62;
 woman_percentage["ndn"] = .59;
-woman_percentage["asian"] = .9;
+woman_percentage["asian"] = .9; 
 
 //find the percentage of a white man's earnings based on the dropdown selection of a woman's ethnicity
 function getPercentage() {
@@ -23,7 +25,27 @@ function getPercentage() {
 
   //return the percentage numeral to calculate in the final result
   return ethnicityPercentage;
-}
+} */
+
+
+
+  function salaryPercentTable(initialSalary) {
+    if(initialSalary<=4999) {
+      return 2.2;
+    } else if (initialSalary>=5000 && initialSalary<=14999) {
+      return 3.3;
+    } else if ((initialSalary>=15000 && initialSalary<=24999)) {
+      return 4.4;
+    } else if ((initialSalary>=25000 && initialSalary<=34999)) {
+      return 5.5;
+    } else if ((initialSalary>=35000 && initialSalary<=44999)) {
+      return 6.6;
+    } else if ((initialSalary>=45000 && initialSalary<=54999)) {
+      return 7.7;
+    }
+  };
+
+
 
 //what to do with the salary number input
 //Since the user enters numeric value directly to the text box, we don’t have keep an associative array to map to a number. We can use the parseInt() function.
@@ -42,14 +64,24 @@ function getInitialSalary() {
   return initialSalary;
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function calculateTotal() {
   //get the final calculated salary by calling our function!
   //then we have to round using weird math from http://www.webdeveloper.com/forum/showthread.php?222667-How-to-round-variables-up-to-2-decimal-places
-  var getCalculatedSalary = getInitialSalary() * getPercentage();
+  var getPercent = salaryPercentTable(getInitialSalary());  
+  var getCalculatedSalary = getInitialSalary() * 0.7 //getPercentage();
   var calculatedSalary = Math.round(getCalculatedSalary * Math.pow(10, 2)) / Math.pow(10, 2);
 
+    calculatedSalary = numberWithCommas(calculatedSalary)
+
   //display the result
-  document.getElementById('salary-calculated').innerHTML = "$" + calculatedSalary + ".";
+  
+
+    document.getElementById('salary-calculated').innerHTML = "$" + calculatedSalary + ".";
+    document.getElementById('percent-calculated').innerHTML = getPercent + "%";
 }
 
 
