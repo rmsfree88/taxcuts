@@ -71,15 +71,27 @@ function numberWithCommas(x) {
 function calculateTotal() {
   //get the final calculated salary by calling our function!
   //then we have to round using weird math from http://www.webdeveloper.com/forum/showthread.php?222667-How-to-round-variables-up-to-2-decimal-places
-  var getPercent = salaryPercentTable(getInitialSalary());  
-  var getCalculatedSalary = getInitialSalary() * 0.7 //getPercentage();
-  var calculatedSalary = Math.round(getCalculatedSalary * Math.pow(10, 2)) / Math.pow(10, 2);
+  //var getPercent = salaryPercentTable(getInitialSalary());  
+  var sal = getInitialSalary()  //getPercentage();
+  //var calculatedSalary = Math.round(getCalculatedSalary * Math.pow(10, 2)) / Math.pow(10, 2);
+
+    
+
+  
+    sav17=Math.round(-1*Math.pow(10,-14)*Math.pow(sal,3)+2*Math.pow(10,-8)*Math.pow(sal,2)+0.0119*sal);
+
+    per17=0.2774*Math.log(sal)-1.8211;
+    per17=Math.round(per17*10)/10; //work-around to round 1 decimal place
+
+    sav27=Math.round(-2*Math.pow(10,-14)*Math.pow(sal,3)+4*Math.pow(10,-8)*Math.pow(sal,2)+0.0087*sal);
+
+    per27=-1*Math.pow(10,-12)*Math.pow(sal,2)+3*Math.pow(10,-6)*sal+0.5904;
+    per27=Math.round(per27*10)/10; //work-around to round 1 decimal place
+
+    document.getElementById("demo").innerHTML = per17;
 
     calculatedSalary = numberWithCommas(calculatedSalary)
-
-  //display the result
-  
-
+    
     document.getElementById('salary-calculated').innerHTML = "$" + calculatedSalary + ".";
     document.getElementById('percent-calculated').innerHTML = getPercent + "%";
 }
