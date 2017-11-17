@@ -71,29 +71,54 @@ function numberWithCommas(x) {
 function calculateTotal() {
   //get the final calculated salary by calling our function!
   //then we have to round using weird math from http://www.webdeveloper.com/forum/showthread.php?222667-How-to-round-variables-up-to-2-decimal-places
-  //var getPercent = salaryPercentTable(getInitialSalary());  
+  //var getPercent = salaryPercentTable(getInitialSalary());  //DONT NEED TABLE ANYMORE
   var sal = getInitialSalary()  //getPercentage();
   //var calculatedSalary = Math.round(getCalculatedSalary * Math.pow(10, 2)) / Math.pow(10, 2);
 
-    
 
-  
-    sav17=Math.round(-1*Math.pow(10,-14)*Math.pow(sal,3)+2*Math.pow(10,-8)*Math.pow(sal,2)+0.0119*sal);
+    //Calculating dollars saved and percent savings for 17 and 27 both based on EQNs from trendlines of excel charts
+    sav17=Math.round(-1*Math.pow(10,-14)*Math.pow(sal,3)+3*Math.pow(10,-8)*Math.pow(sal,2)+0.0119*sal);
 
-    per17=0.2774*Math.log(sal)-1.8211;
+    per17=0.3814*Math.log(sal)-3.0634;
     per17=Math.round(per17*10)/10; //work-around to round 1 decimal place
 
-    sav27=Math.round(-2*Math.pow(10,-14)*Math.pow(sal,3)+4*Math.pow(10,-8)*Math.pow(sal,2)+0.0087*sal);
+    sav27=Math.round(-5*Math.pow(10,-15)*Math.pow(sal,2)+2*Math.pow(10,-8)*Math.pow(sal,2)+0.0025*sal);
 
-    per27=-1*Math.pow(10,-12)*Math.pow(sal,2)+3*Math.pow(10,-6)*sal+0.5904;
+    per27=0.2863*Math.log(sal)-2.9121;
     per27=Math.round(per27*10)/10; //work-around to round 1 decimal place
 
-    document.getElementById("demo").innerHTML = per17;
-
-    calculatedSalary = numberWithCommas(calculatedSalary)
     
-    document.getElementById('salary-calculated').innerHTML = "$" + calculatedSalary + ".";
-    document.getElementById('percent-calculated').innerHTML = getPercent + "%";
+    //HERE ARE THE CONSTANTs FOR THE 1%
+    savwealthy17 = 40328;
+    perwealthy17 = 2.253;
+    savwealthy27 = 33932;
+    perwealthy27 = 1.3773;
+    
+    //Calculating what savings would have been with wealthy savings percentage
+    savwouldve17 = Math.round(sav17*(perwealthy17/per17));
+    savwouldve27 = Math.round(sav27*(perwealthy27/per27));
+    
+    //Calculating difference in savings
+    savdiff17 = savwealthy17 - sav17;
+    savdiff27 = savwealthy27 - sav27;
+    
+    //Adding commas to dollars
+    sav17 = numberWithCommas(sav17);
+    sav27 = numberWithCommas(sav27);
+    savwouldve17 = numberWithCommas(savwouldve17);
+    savwouldve27 = numberWithCommas(savwouldve27);
+    savdiff17 = numberWithCommas(savdiff17);
+    savdiff27 = numberWithCommas(savdiff27);
+    
+    document.getElementById('sav17A').innerHTML = "$" + sav17;
+    document.getElementById('sav27A').innerHTML = "$" + sav27;
+    document.getElementById('per17A').innerHTML = per17 + "%";
+    document.getElementById('per27A').innerHTML = per27 + "%";
+    
+    document.getElementById('savwouldve17').innerHTML = "$" + savwouldve17;
+    document.getElementById('savwouldve27').innerHTML = "$" + savwouldve27;
+    document.getElementById('savdiff17').innerHTML = "$" + savdiff17;
+    document.getElementById('savdiff27').innerHTML ="$" + savdiff27;
 }
 
 
